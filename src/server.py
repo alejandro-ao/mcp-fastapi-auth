@@ -4,6 +4,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .tavily_mcp import mcp as tavily_mcp_server
+from .config import settings
 
 # Create a combined lifespan to manage the MCP session manager
 @contextlib.asynccontextmanager
