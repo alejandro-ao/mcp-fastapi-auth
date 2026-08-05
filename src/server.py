@@ -4,9 +4,14 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .auth import AuthMiddleware
-from .config import settings
-from .tavily_mcp import mcp as tavily_mcp_server
+try:
+    from .auth import AuthMiddleware
+    from .config import settings
+    from .tavily_mcp import mcp as tavily_mcp_server
+except ImportError:
+    from auth import AuthMiddleware
+    from config import settings
+    from tavily_mcp import mcp as tavily_mcp_server
 import json
 
 # Create a combined lifespan to manage the MCP session manager

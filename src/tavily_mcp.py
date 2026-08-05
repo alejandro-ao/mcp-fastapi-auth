@@ -2,7 +2,10 @@ from mcp.server.fastmcp import FastMCP
 from tavily import TavilyClient
 from typing import Dict, List
 
-from .config import settings
+try:
+    from .config import settings
+except ImportError:
+    from config import settings
 
 # Create an MCP server
 mcp = FastMCP("web-search")
